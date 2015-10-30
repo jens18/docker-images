@@ -1,4 +1,14 @@
-# Unofficial Coherence 12.2.1 Image
+# Unofficial Coherence 12.2.1 Learning Image
+
+* The Coherence 12.2.1 examples are documented here: http://docs.oracle.com/middleware/1221/coherence/install/examples.htm#COHIN1050
+* 
+
+## Image content
+
+* OL7 
+* JDK 8
+* Coherence 12.2.1
+* Maven 3.3.3
 
 ## Common Instructions
 
@@ -8,9 +18,29 @@
 .. Clone this workspace: `git clone https://github.com/jens18/docker-images.git`
 .. Build the image as `docker build -t java8_coh12 .`
 
-### Run container
-. If you built it locally:  `docker run -p 8080:8080 -v /tmp/.X11-unix/X0:/tmp/.X11-unix/X0 -i -t java8_coh12  /bin/bash /home/cgbu-dev/run_rest_example.sh`
+### Run Coherence REST example
+. Startup Coherence REST example:  `docker run -p 8080:8080 -v /tmp/.X11-unix/X0:/tmp/.X11-unix/X0 -i -t java8_coh12  /bin/bash /home/cgbu-dev/run_rest_example.sh`
 . Access the Coherence REST example at http://127.0.0.1:8080/application/index.html
+
+### Run Coherence federated caching example
+
+. root passwd: cgbu-dev
+. cgbu-dev passwd: cgbu-dev
+. Startup container:   `docker run -v $XSOCK:$XSOCK -i -t java8_coh12  /bin/bash`
+
+[source, text]
+----
+host: $ xhost +
+container default terminal: xterm& # to launch the first Coherence node (name: xterm1)
+container default terminal: xterm& # to launch the second Coherence node (name: xterm2)
+container default terminal: jconsole&
+container xterm 1: cd ~/opt/coh_12.2.1/coherence/bin; ./cache-server.sh
+container xterm 2: cd ~/opt/coh_12.2.1/coherence/bin; ./coherence.sh
+container xterm 2: cache test
+container xterm 2: put key1 jens
+container xterm 2: get key1
+----
+
 
 
 
