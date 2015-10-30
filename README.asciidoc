@@ -61,7 +61,9 @@ container xterm 2: get key1
 
 ### HTTP proxy configuration
 
-You have to enable support for an HTTP proxy in the following configuration files:
+The following configuration files have to be changed if your environment requires the use of a HTTP proxy:
+
+Note: HTTP proxy setting a by default commented out.
 
 . Host: Docker service: /etc/default/docker (requires restart of Docker service: `service docker restart`)
 . Container: Maven: settings.xml
