@@ -44,6 +44,9 @@ image::images/coh_federated_caching.png[]
 
 ### Run Coherence
 
+* Start default Coherence datagrid with 2 nodes
+* One node runs the interactive Coherence console
+
 [source, text]
 ----
 host: $ xhost +
