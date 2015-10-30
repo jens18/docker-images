@@ -12,7 +12,7 @@
 
 ## Common Instructions
 
-### Get image
+### Build image
 
 . From the workspace
 .. Clone this workspace: `git clone https://github.com/jens18/docker-images.git`
@@ -24,9 +24,9 @@
 
 ### Run Coherence federated caching example
 
-. root passwd: cgbu-dev
-. cgbu-dev passwd: cgbu-dev
-. Startup container:   `docker run -v $XSOCK:$XSOCK -i -t java8_coh12  /bin/bash`
+* root passwd: cgbu-dev
+* cgbu-dev passwd: cgbu-dev
+* Startup container:   `docker run -v $XSOCK:$XSOCK -i -t java8_coh12  /bin/bash`
 
 [source, text]
 ----
