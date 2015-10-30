@@ -5,7 +5,7 @@ MAINTAINER Jens Kaemmerer <jens.kaemmerer@oracle.com>
 RUN echo "root:cgbu-dev" | chpasswd
 
 ### setup Yum
-RUN echo "proxy=http://www-proxy.us.oracle.com:80" >> /etc/yum.conf
+# RUN echo "proxy=http://www-proxy.us.oracle.com:80" >> /etc/yum.conf
 
 ### install Oracle Linux dependencies 
 # tar/unzip - install JDK, Coherence
