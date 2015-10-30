@@ -7,6 +7,9 @@ RUN echo "root:cgbu-dev" | chpasswd
 ### setup Yum
 # RUN echo "proxy=http://www-proxy.us.oracle.com:80" >> /etc/yum.conf
 
+### setup curl HTTP proxy
+# ENV http_proxy http://www-proxy.us.oracle.com:80
+
 ### install Oracle Linux dependencies 
 # tar/unzip - install JDK, Coherence
 # emacs - to create
@@ -33,8 +36,7 @@ ENV PATH $JAVA_HOME/bin:$PATH
 RUN java -version
 
 ### install Maven 3.3.3
-COPY apache-maven-3.3.3-bin.zip /home/cgbu-dev/opt/
-RUN unzip -q apache-maven-3.3.3-bin.zip
+RUN cd /home/cgbu-dev/opt && curl -O http://apache.mirrors.tds.net/maven/maven-3/3.3.3/binaries/apache-maven-3.3.3-bin.zip && unzip -q apache-maven-3.3.3-bin.zip && rm apache-maven-3.3.3-bin.zip
 # configure Maven
 RUN mkdir /home/cgbu-dev/.m2
 COPY settings.xml /home/cgbu-dev/.m2/
@@ -83,5 +85,5 @@ RUN chmod 755 /home/cgbu-dev/run_rest_example.sh
 RUN rm /home/cgbu-dev/opt/fmw_12.2.1.0.0_coherence.jar \
 /home/cgbu-dev/opt/fmw_12.2.1.0.0_coherence_Disk1_1of1.zip \
 /home/cgbu-dev/opt/coh_12.2.1.rsp \
-/home/cgbu-dev/opt/jdk-8u65-linux-x64.tar.gz \
-/home/cgbu-dev/opt/apache-maven-3.3.3-bin.zip
+/home/cgbu-dev/opt/jdk-8u65-linux-x64.tar.gz
+
