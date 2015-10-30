@@ -1,0 +1,17 @@
+# Unofficial Coherence 12.2.1 Image
+
+## Common Instructions
+
+### Get image
+
+. From the workspace
+.. Clone this workspace: `git clone https://github.com/jens18/docker-images.git`
+.. Build the image as `docker build -t java8_coh12 .`
+
+### Run container
+. If you built it locally:  `docker run -p 8080:8080 -v /tmp/.X11-unix/X0:/tmp/.X11-unix/X0 -i -t java8_coh12  /bin/bash /home/cgbu-dev/run_rest_example.sh`
+. Access the Coherence REST example at http://127.0.0.1:8080/application/index.html
+
+
+
+
