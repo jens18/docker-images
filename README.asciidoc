@@ -13,9 +13,8 @@
 
 ### Build image
 
-. From the workspace
-.. Clone this workspace: `git clone https://github.com/jens18/docker-images.git`
-.. Build the image as `docker build -t java8_coh12 .`
+. Clone this workspace: `git clone https://github.com/jens18/docker-images.git`
+. Build the image as `docker build -t java8_coh12 .`
 
 ### Run Coherence REST example
 . Startup Coherence REST example:  `docker run -p 8080:8080 -v /tmp/.X11-unix/X0:/tmp/.X11-unix/X0 -i -t java8_coh12  /bin/bash /home/cgbu-dev/run_rest_example.sh`
