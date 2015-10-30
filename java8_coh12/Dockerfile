@@ -10,8 +10,7 @@ RUN echo "proxy=http://www-proxy.us.oracle.com:80" >> /etc/yum.conf
 ### install Oracle Linux dependencies 
 # tar/unzip - install JDK, Coherence
 # emacs - to create
-# minimal set of X11 libs - to run graphical applications such as jconsole, xter
-m
+# minimal set of X11 libs - to run graphical applications such as jconsole, xterm
 RUN yum -y install tar unzip emacs-nox libXrender libXext libXtst xterm
 
 ### set DISPLAY variable:
@@ -51,15 +50,15 @@ RUN unzip fmw_12.2.1.0.0_coherence_Disk1_1of1.zip
 COPY coh_12.2.1.rsp /home/cgbu-dev/opt/
 COPY oraInst.loc /home/cgbu-dev/opt/
 
-# change permissions for all files in the cgbu-dev home directory (all files are
- still owned by root)
+# change permissions for all files in the cgbu-dev home directory 
+# (all files are still owned by root)
 RUN chown -R cgbu-dev:cgbu-dev /home/cgbu-dev
 
 # start the Docker container with this user
 USER cgbu-dev 
 # run OUI installer
-RUN java -jar fmw_12.2.1.0.0_coherence.jar -silent -responseFile /home/cgbu-dev/
-opt/coh_12.2.1.rsp -invPtrLoc /home/cgbu-dev/opt/oraInst.loc
+RUN java -jar fmw_12.2.1.0.0_coherence.jar -silent -responseFile \
+/home/cgbu-dev/opt/coh_12.2.1.rsp -invPtrLoc /home/cgbu-dev/opt/oraInst.loc
 
 # set Coherence environment variables
 ENV COHERENCE_HOME=/home/cgbu-dev/opt/coh_12.2.1/coherence
@@ -69,18 +68,20 @@ ENV COHERENCE_HOME=/home/cgbu-dev/opt/coh_12.2.1/coherence
 # federated caching 
 RUN cd ${COHERENCE_HOME}/examples/java; bin/build federation
 # REST
-RUN mvn install:install-file -Dfile=${COHERENCE_HOME}/lib/coherence.jar -DpomFil
-e=${COHERENCE_HOME}/plugins/maven/com/oracle/coherence/coherence/12.2.1/coherenc
-e.12.2.1.pom
-RUN mvn install:install-file -Dfile=${COHERENCE_HOME}/lib/coherence-rest.jar -Dp
-omFile=${COHERENCE_HOME}/plugins/maven/com/oracle/coherence/coherence-rest/12.2.
-1/coherence-rest.12.2.1.pom
+RUN mvn install:install-file \
+-Dfile=${COHERENCE_HOME}/lib/coherence.jar \
+-DpomFile=${COHERENCE_HOME}/plugins/maven/com/oracle/coherence/coherence/12.2.1/coherence.12.2.1.pom
+RUN mvn install:install-file \
+-Dfile=${COHERENCE_HOME}/lib/coherence-rest.jar \
+-DpomFile=${COHERENCE_HOME}/plugins/maven/com/oracle/coherence/coherence-rest/12.2.1/coherence-rest.12.2.1.pom
 RUN cd ${COHERENCE_HOME}/examples/rest; mvn clean compile
-RUN echo "cd ${COHERENCE_HOME}/examples/rest; mvn exec:exec -DhttpProxy" > /home
-/cgbu-dev/run_rest_example.sh
+RUN echo "cd ${COHERENCE_HOME}/examples/rest; mvn exec:exec -DhttpProxy" \
+> /home/cgbu-dev/run_rest_example.sh
 RUN chmod 755 /home/cgbu-dev/run_rest_example.sh
 
 # remove software package files
-RUN rm /home/cgbu-dev/opt/fmw_12.2.1.0.0_coherence.jar /home/cgbu-dev/opt/fmw_12
-.2.1.0.0_coherence_Disk1_1of1.zip /home/cgbu-dev/opt/coh_12.2.1.rsp /home/cgbu-d
-ev/opt/jdk-8u65-linux-x64.tar.gz /home/cgbu-dev/opt/apache-maven-3.3.3-bin.zip
+RUN rm /home/cgbu-dev/opt/fmw_12.2.1.0.0_coherence.jar \
+/home/cgbu-dev/opt/fmw_12.2.1.0.0_coherence_Disk1_1of1.zip \
+/home/cgbu-dev/opt/coh_12.2.1.rsp \
+/home/cgbu-dev/opt/jdk-8u65-linux-x64.tar.gz \
+/home/cgbu-dev/opt/apache-maven-3.3.3-bin.zip
