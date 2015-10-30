@@ -1,7 +1,6 @@
 # Unofficial Coherence 12.2.1 Learning Image
 
 * The Coherence 12.2.1 examples are documented here: http://docs.oracle.com/middleware/1221/coherence/install/examples.htm#COHIN1050
-* 
 
 ## Image content
 
@@ -33,6 +32,21 @@ image::images/coh_rest_app.png[]
 [source, text]
 ----
 host: $ xhost +
+container default terminal: xterm& # launch 4 xterm's (name: xterm[1-4])
+container default terminal: jconsole&
+container xterm 1: cd ~/opt/coh_12.2.1/coherence/examples/java; bin/run-cache-server federation ClusterA # datagrid A
+container xterm 2: cd ~/opt/coh_12.2.1/coherence/examples/java; bin/run-cache-server federation ClusterB # datagrid B
+container xterm 3: cd ~/opt/coh_12.2.1/coherence/examples/java; bin/run federation ClusterA # UI for datagrid A
+container xterm 4: cd ~/opt/coh_12.2.1/coherence/examples/java; bin/run federation ClusterB # UI for datagrid B
+----
+
+image::images/coh_federated_caching.png[]
+
+### Run Coherence
+
+[source, text]
+----
+host: $ xhost +
 container default terminal: xterm& # to launch the first Coherence node (name: xterm1)
 container default terminal: xterm& # to launch the second Coherence node (name: xterm2)
 container default terminal: jconsole&
@@ -42,8 +56,6 @@ container xterm 2: cache test
 container xterm 2: put key1 jens
 container xterm 2: get key1
 ----
-
-image::images/coh_federated_caching.png[]
 
 ### HTTP proxy configuration
 
