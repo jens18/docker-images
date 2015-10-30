@@ -41,7 +41,13 @@ container xterm 2: put key1 jens
 container xterm 2: get key1
 ----
 
+### HTTP proxy configuration
 
+You have to enable support for an HTTP proxy in the following configuration files:
+
+. Docker server: /etc/default/docker
+. Maven: settings.xml
+. OL7 Yum: Dockerfile
 
 
 
