@@ -22,6 +22,8 @@
 . Startup Coherence REST example:  `docker run -p 8080:8080 -v /tmp/.X11-unix/X0:/tmp/.X11-unix/X0 -i -t java8_coh12  /bin/bash /home/cgbu-dev/run_rest_example.sh`
 . Access the Coherence REST example at http://127.0.0.1:8080/application/index.html
 
+image::images/coh_rest_app.png[]
+
 ### Run Coherence federated caching example
 
 * root passwd: cgbu-dev
@@ -40,6 +42,8 @@ container xterm 2: cache test
 container xterm 2: put key1 jens
 container xterm 2: get key1
 ----
+
+image::images/coh_federated_caching.png[]
 
 ### HTTP proxy configuration
 
