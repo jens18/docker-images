@@ -1,0 +1,4 @@
+#Oracle Installer Location File Location
+#Wed Oct 28 12:43:59 PDT 2015
+inst_group=cgbu-dev
+inventory_loc=/home/cgbu-dev/opt/oraInventory
