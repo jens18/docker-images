@@ -69,7 +69,7 @@ container xterm 2: get key1
 
 The following configuration files have to be changed if your environment requires the use of a HTTP proxy:
 
-Note: HTTP proxy settings are by default commented out. Search for the string "www-proxy.us.oracle.com"
+Note: HTTP proxy settings are by default commented out. Search for the string "www-proxy.us.oracle.com".
 
 . Host Docker service: /etc/default/docker (requires restart of Docker service: `service docker restart`)
 . Container Maven: settings.xml
