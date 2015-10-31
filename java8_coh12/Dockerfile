@@ -4,7 +4,7 @@ MAINTAINER Jens Kaemmerer <jens.kaemmerer@oracle.com>
 ### set the root password
 RUN echo "root:cgbu-dev" | chpasswd
 
-### setup Yum
+### setup Yum HTTP proxy
 # RUN echo "proxy=http://www-proxy.us.oracle.com:80" >> /etc/yum.conf
 
 ### setup curl HTTP proxy
