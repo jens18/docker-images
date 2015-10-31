@@ -52,6 +52,7 @@ image::images/coh_federated_caching.png[]
 
 * Start default Coherence datagrid with 2 nodes
 * One node runs the interactive Coherence console
+* Startup container:   `docker run -v $XSOCK:$XSOCK -i -t java8_coh12  /bin/bash`
 
 [source, text]
 ----
