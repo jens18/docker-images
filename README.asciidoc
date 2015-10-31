@@ -1,6 +1,12 @@
 # Unofficial Coherence 12.2.1 Learning Image
 
-* The Coherence 12.2.1 examples are documented here: http://docs.oracle.com/middleware/1221/coherence/install/examples.htm#COHIN1050
+* Coherence 12.2.1 documentation:
+
+http://docs.oracle.com/middleware/1221/coherence/index.html
+
+* Coherence 12.2.1 examples are documented here:
+
+http://docs.oracle.com/middleware/1221/coherence/install/examples.htm#COHIN1050
 
 ## Image content
 
