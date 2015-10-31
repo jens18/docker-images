@@ -19,6 +19,7 @@ http://docs.oracle.com/middleware/1221/coherence/install/examples.htm#COHIN1050
 
 ### Build image
 
+. Download JDK 8 and Coherence 12.2.1 packages from the locations defined in the ".download" files.
 . Clone this workspace: `git clone https://github.com/jens18/docker-images.git`
 . Build the image as `docker build -t java8_coh12 .`
 
