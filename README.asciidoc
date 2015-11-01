@@ -21,7 +21,7 @@ http://docs.oracle.com/middleware/1221/coherence/install/examples.htm#COHIN1050
 
 . Clone this workspace: `git clone https://github.com/jens18/docker-images.git`
 . Download JDK 8 and Coherence 12.2.1 packages from the locations defined in the ".download" files.
-. Build the image as `docker build -t java8_coh12 .`
+. Build the image as `cd docker-images/java8_coh12; sudo docker build -t java8_coh12 .`
 
 ### Accounts
 
@@ -29,14 +29,14 @@ http://docs.oracle.com/middleware/1221/coherence/install/examples.htm#COHIN1050
 * cgbu-dev passwd: cgbu-dev
 
 ### Run Coherence REST example
-. Startup Coherence REST example:  `docker run -p 8080:8080 -v /tmp/.X11-unix/X0:/tmp/.X11-unix/X0 -i -t java8_coh12  /bin/bash /home/cgbu-dev/run_rest_example.sh`
+. Startup Coherence REST example:  `sudo docker run -p 8080:8080 -v /tmp/.X11-unix/X0:/tmp/.X11-unix/X0 -i -t java8_coh12  /bin/bash /home/cgbu-dev/run_rest_example.sh`
 . Access the Coherence REST example at http://127.0.0.1:8080/application/index.html
 
 image::images/coh_rest_app.png[]
 
 ### Run Coherence federated caching example
 
-* Startup container:   `docker run -v $XSOCK:$XSOCK -i -t java8_coh12  /bin/bash`
+* Startup container:   `sudo docker run -v /tmp/.X11-unix/X0:/tmp/.X11-unix/X0 -i -t java8_coh12  /bin/bash`
 
 [source, text]
 ----
@@ -56,7 +56,7 @@ image::images/coh_federated_caching.png[]
 * Start default Coherence datagrid with 2 nodes
 * One node runs the interactive Coherence console
 
-* Startup container:   `docker run -v $XSOCK:$XSOCK -i -t java8_coh12  /bin/bash`
+* Startup container:   `sudo docker run -v /tmp/.X11-unix/X0:/tmp/.X11-unix/X0 -i -t java8_coh12  /bin/bash`
 
 [source, text]
 ----
