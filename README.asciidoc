@@ -77,7 +77,9 @@ The following configuration files have to be changed if your environment require
 
 Note: HTTP proxy settings are by default commented out. Search for the string "www-proxy.us.oracle.com".
 
-. Host Docker service: /etc/default/docker (requires restart of Docker service: `service docker restart`)
+. Host Docker service: 
+.. Ubuntu: /etc/default/docker (requires restart of Docker service: `service docker restart`)
+.. OL6: /etc/sysconfig/docker (requires restart of Docker service: `service docker restart`)
 . Container Maven: settings.xml
 . Container OL7 Yum: Dockerfile
 . Container Curl: Dockerfile
