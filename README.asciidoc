@@ -91,9 +91,9 @@ Note: HTTP proxy settings are by default commented out. Search for the string "w
 . Host Docker service: 
 .. Ubuntu: /etc/default/docker (requires restart of Docker service: `service docker restart`)
 .. OL6: /etc/sysconfig/docker (requires restart of Docker service: `service docker restart`)
-. Container Maven: settings.xml (part of this Git project)
-. Container OL7 Yum: Dockerfile (part of this Git project)
-. Container Curl: Dockerfile (part of this Git project)
+. Container Maven: settings.xml (part of the java8_coh12 Git project)
+. Container OL7 Yum: Dockerfile (part of java8_coh12 Git project)
+. Container Curl: Dockerfile (part of java8_coh12 Git project)
 
 
 
