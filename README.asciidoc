@@ -28,15 +28,26 @@ http://docs.oracle.com/middleware/1221/coherence/install/examples.htm#COHIN1050
 * root passwd: cgbu-dev
 * cgbu-dev passwd: cgbu-dev
 
+### X11 configuration for Docker containers
+
+The Coherence examples depend on a working configuration for X11. 
+
+. determine the DISPLAY variable value of your Docker host: `echo $DISPLAY`
+. determine the Unix domain socket file name: `ls /tmp/.X11-unix`
+. enable connection from all machines to the X11 server of your Docker host: `xhost +`
+. replace Unix domain socket file name and DISPLAY variable value in the `docker` commands below
+
+NOTE: The Unix domain socket file name contains the X11 server id. 
+
 ### Run Coherence REST example
-. Startup Coherence REST example:  `sudo docker run -p 8080:8080 -v /tmp/.X11-unix/X0:/tmp/.X11-unix/X0 -i -t java8_coh12  /bin/bash /home/cgbu-dev/run_rest_example.sh`
+. Startup Coherence REST example:  `sudo docker run -p 8080:8080 -v /tmp/.X11-unix/X0:/tmp/.X11-unix/X0 -e DISPLAY=":0.0" -i -t java8_coh12  /bin/bash /home/cgbu-dev/run_rest_example.sh`
 . Access the Coherence REST example at http://127.0.0.1:8080/application/index.html
 
 image::images/coh_rest_app.png[]
 
 ### Run Coherence federated caching example
 
-* Startup container:   `sudo docker run -v /tmp/.X11-unix/X0:/tmp/.X11-unix/X0 -i -t java8_coh12  /bin/bash`
+* Startup container:   `sudo docker run -v /tmp/.X11-unix/X0:/tmp/.X11-unix/X0 -e DISPLAY=":0.0" -i -t java8_coh12  /bin/bash`
 
 [source, text]
 ----
@@ -56,7 +67,7 @@ image::images/coh_federated_caching.png[]
 * Start default Coherence datagrid with 2 nodes
 * One node runs the interactive Coherence console
 
-* Startup container:   `sudo docker run -v /tmp/.X11-unix/X0:/tmp/.X11-unix/X0 -i -t java8_coh12  /bin/bash`
+* Startup container:   `sudo docker run -v /tmp/.X11-unix/X0:/tmp/.X11-unix/X0 -e DISPLAY=":0.0" -i -t java8_coh12  /bin/bash`
 
 [source, text]
 ----
