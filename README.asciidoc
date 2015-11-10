@@ -22,6 +22,7 @@ http://docs.oracle.com/middleware/1221/coherence/install/examples.htm#COHIN1050
 . Clone this workspace: `git clone https://github.com/jens18/docker-images.git`
 NOTE: You have to first set the HTTPS_PROXY variable before running this command if your network requires the use a HTTP proxy server. 
 . Download JDK 8 and Coherence 12.2.1 packages from the locations defined in the ".download" files.
+. Enable HTTP proxy in 'settings.xml' and 'Dockerfile' (see instructions in the <<http_proxy>> section of this document)
 . Build the image as `cd docker-images/java8_coh12; sudo docker build -t java8_coh12 .`
 
 ### Accounts
@@ -84,6 +85,7 @@ container xterm 2: get key1
 ----
 
 ### HTTP proxy configuration
+[[http_proxy]]
 
 The following configuration files have to be changed if your environment requires the use of a HTTP proxy:
 
