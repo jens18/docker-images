@@ -58,8 +58,8 @@ RUN chown -R cgbu-dev:cgbu-dev /home/cgbu-dev
 
 # start the Docker container with this user
 USER cgbu-dev 
-# run OUI installer
-RUN java -jar fmw_12.2.1.0.0_coherence.jar -silent -responseFile \
+# run OUI installer (-ignoreSysPrereqs was added to pass the swap space check on systems without swap space)
+RUN java -jar fmw_12.2.1.0.0_coherence.jar -silent -ignoreSysPrereqs -responseFile \
 /home/cgbu-dev/opt/coh_12.2.1.rsp -invPtrLoc /home/cgbu-dev/opt/oraInst.loc
 
 # set Coherence environment variables
