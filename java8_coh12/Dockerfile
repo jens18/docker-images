@@ -27,8 +27,11 @@ RUN mkdir /home/cgbu-dev/opt
 WORKDIR /home/cgbu-dev/opt/
 
 ### install Java 8
-COPY jdk-8u65-linux-x64.tar.gz /home/cgbu-dev/opt/
-RUN tar -zxf jdk-8u65-linux-x64.tar.gz
+# COPY jdk-8u65-linux-x64.tar.gz /home/cgbu-dev/opt/
+# Note: 
+# direct download from Oracle Technical Network (OTN)
+# (http://stackoverflow.com/questions/10268583/downloading-java-jdk-on-linux-via-wget-is-shown-license-page-instead)
+RUN cd /home/cgbu-dev/opt && curl -L -C - -b "oraclelicense=accept-securebackup-cookie" -O http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64.tar.gz && tar -zxf jdk-8u65-linux-x64.tar.gz
 # set Java environment variables
 ENV JAVA_HOME /home/cgbu-dev/opt/jdk1.8.0_65
 ENV PATH $JAVA_HOME/bin:$PATH
@@ -47,8 +50,11 @@ ENV PATH /home/cgbu-dev/opt/apache-maven-3.3.3/bin:$PATH
 RUN mvn -version
 
 ### install Coherence 12.2.1
-COPY fmw_12.2.1.0.0_coherence_Disk1_1of1.zip /home/cgbu-dev/opt/
-RUN unzip fmw_12.2.1.0.0_coherence_Disk1_1of1.zip
+# COPY fmw_12.2.1.0.0_coherence_Disk1_1of1.zip /home/cgbu-dev/opt/
+# Note: 
+# direct download from Oracle Technical Network (OTN)
+# (http://www.pythian.com/blog/how-to-download-oracle-software-using-wget-or-curl/)
+RUN curl -L -C - -O http://download.oracle.com/otn/nt/middleware/12c/1221/fmw_12.2.1.0.0_coherence_Disk1_1of1.zip?AuthParam=1447903745_922a7494c145c257ce923de8e7cfcc91 -o fmw_12.2.1.0.0_coherence_Disk1_1of1.zip && unzip fmw_12.2.1.0.0_coherence_Disk1_1of1.zip
 COPY coh_12.2.1.rsp /home/cgbu-dev/opt/
 COPY oraInst.loc /home/cgbu-dev/opt/
 
