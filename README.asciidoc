@@ -56,10 +56,10 @@ image::images/coh_rest_app.png[]
 host: $ xhost +
 container default terminal: xterm& # launch 4 xterm's (name: xterm[1-4])
 container default terminal: jconsole&
-container xterm 1: cd ~/opt/coh_12.2.1/coherence/examples/java; bin/run-cache-server federation ClusterA # datagrid A
-container xterm 2: cd ~/opt/coh_12.2.1/coherence/examples/java; bin/run-cache-server federation ClusterB # datagrid B
-container xterm 3: cd ~/opt/coh_12.2.1/coherence/examples/java; bin/run federation ClusterA # UI for datagrid A
-container xterm 4: cd ~/opt/coh_12.2.1/coherence/examples/java; bin/run federation ClusterB # UI for datagrid B
+container xterm 1: cd ~/opt/wlcoh_12.2.1/coherence/examples/java; bin/run-cache-server federation ClusterA # datagrid A
+container xterm 2: cd ~/opt/wlcoh_12.2.1/coherence/examples/java; bin/run-cache-server federation ClusterB # datagrid B
+container xterm 3: cd ~/opt/wlcoh_12.2.1/coherence/examples/java; bin/run federation ClusterA # UI for datagrid A
+container xterm 4: cd ~/opt/wlcoh_12.2.1/coherence/examples/java; bin/run federation ClusterB # UI for datagrid B
 ----
 
 image::images/coh_federated_caching.png[]
@@ -77,8 +77,8 @@ host: $ xhost +
 container default terminal: xterm& # to launch the first Coherence node (name: xterm1)
 container default terminal: xterm& # to launch the second Coherence node (name: xterm2)
 container default terminal: jconsole&
-container xterm 1: cd ~/opt/coh_12.2.1/coherence/bin; ./cache-server.sh
-container xterm 2: cd ~/opt/coh_12.2.1/coherence/bin; ./coherence.sh
+container xterm 1: cd ~/opt/wlcoh_12.2.1/coherence/bin; ./cache-server.sh
+container xterm 2: cd ~/opt/wlcoh_12.2.1/coherence/bin; ./coherence.sh
 container xterm 2: cache test
 container xterm 2: put key1 jens
 container xterm 2: get key1
