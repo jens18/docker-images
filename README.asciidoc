@@ -10,9 +10,11 @@ http://docs.oracle.com/middleware/1221/coherence/install/examples.htm#COHIN1050
 
 ## Image content
 
-* OL7 
-* JDK 8
-* Coherence 12.2.1
+* Oracle Linux 7.1 
+* JDK 8 (1.8.0.65)
+* Coherence 12.2.1 + examples
+* Weblogic 12.2.1
+* jVisualVM + Coherence 12.2.1 plugin
 * Maven 3.3.3
 
 ## Instructions
