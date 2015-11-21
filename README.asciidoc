@@ -12,9 +12,9 @@ http://docs.oracle.com/middleware/1221/coherence/install/examples.htm#COHIN1050
 
 * OS runtime: Oracle Linux 7.1 
 * Java runtime: JDK 8 (1.8.0.65), Maven 3.3.3
-* Middleware: Coherence 12.2.1, Weblogic 12.2.1, 
+* Middleware: Coherence 12.2.1, Weblogic 12.2.1
 * Monitoring: jVisualVM + Coherence 12.2.1 plugin
-* Application: Coherence REST example, Coherence federated caching example, Coherence console, 
+* Application: Coherence REST example, Coherence federated caching example, Coherence console
 
 ## Instructions
 
