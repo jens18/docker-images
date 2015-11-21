@@ -21,6 +21,7 @@ ENV DISPLAY :0
 
 ### create regular user account:
 RUN groupadd cgbu-dev && useradd -g cgbu-dev cgbu-dev
+RUN echo "cgbu-dev:cgbu-dev" | chpasswd
 
 # create directory for additional software packages
 RUN mkdir /home/cgbu-dev/opt
