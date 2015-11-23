@@ -21,7 +21,7 @@ http://docs.oracle.com/middleware/1221/coherence/install/examples.htm#COHIN1050
 ### Build image
 
 . Clone this workspace: `git clone https://github.com/jens18/docker-images.git`
-NOTE: You have to first set the HTTPS_PROXY variable before running this command if your network requires the use a HTTP proxy server. 
+NOTE: You have to first set the HTTPS_PROXY variable before running this command if your network requires the use of a HTTP proxy server. 
 . Download JDK 8 and Weblogic / Coherence 12.2.1 packages from the locations defined in the ".download" files.
 . Enable HTTP proxy in 'settings.xml' and 'Dockerfile' (see instructions in the <<http_proxy>> section of this document)
 . Build the image as `cd docker-images/java8_coh12; sudo docker build -t java8_coh12 .`
