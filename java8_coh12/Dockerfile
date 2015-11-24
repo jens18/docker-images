@@ -71,7 +71,7 @@ RUN cd ${JAVA_HOME} && \
 mkdir -p lib/visualvm/visualvm/update/download && \
 cd lib/visualvm/visualvm/update/download && \
 curl -O https://java.net/downloads/visualvm/release136/com-sun-tools-visualvm-modules-visualgc_1.nbm && \
-curl -O https://java.net/downloads/visualvm/release136/com-sun-tools-visualvm-modules-jconsole.nbm && \
+curl -O https://java.net/downloads/visualvm/release136/com-sun-tools-visualvm-modules-threadinspect.nbm && \
 curl -O https://java.net/downloads/visualvm/release136/com-sun-tools-visualvm-modules-mbeans_1.nbm 
 RUN cp ${COHERENCE_HOME}/plugins/jvisualvm/coherence-jvisualvm.nbm ${JAVA_HOME}/lib/visualvm/visualvm/update/download/
 
