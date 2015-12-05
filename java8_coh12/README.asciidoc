@@ -46,7 +46,7 @@ NOTE: The Unix domain socket file name contains the X11 server id.
 . Startup Coherence REST example:  `sudo docker run -p 8080:8080 -v /tmp/.X11-unix/X0:/tmp/.X11-unix/X0 -e DISPLAY=":0.0" -i -t java8_coh12  /bin/bash /home/cgbu-dev/run_rest_example.sh`
 . Access the Coherence REST example at http://127.0.0.1:8080/application/index.html
 
-image::../images/coh_rest_app.png[]
+image::images/coh_rest_app.png[]
 
 ### Run Coherence federated caching example
 
@@ -63,7 +63,7 @@ container xterm 3: cd ~/opt/wlcoh_12.2.1/coherence/examples/java; bin/run federa
 container xterm 4: cd ~/opt/wlcoh_12.2.1/coherence/examples/java; bin/run federation ClusterB # UI for datagrid B
 ----
 
-image::../images/coh_federated_caching.png[]
+image::images/coh_federated_caching.png[]
 
 ### Run Coherence
 
