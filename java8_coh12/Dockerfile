@@ -12,9 +12,11 @@ RUN echo "root:cgbu-dev" | chpasswd
 
 ### install Oracle Linux dependencies 
 # tar/unzip - install JDK, Coherence
-# emacs - to create
+# rsync - required for ECE in a distributed environment
+# emacs - 
+# which - 
 # minimal set of X11 libs - to run graphical applications such as jconsole, xterm
-RUN yum -y install tar unzip emacs-nox libXrender libXext libXtst xterm
+RUN yum -y install tar rsync unzip emacs-nox which libXrender libXext libXtst xterm
 
 ### set DISPLAY variable:
 ENV DISPLAY :0
@@ -22,6 +24,9 @@ ENV DISPLAY :0
 ### create regular user account:
 RUN groupadd cgbu-dev && useradd -g cgbu-dev cgbu-dev
 RUN echo "cgbu-dev:cgbu-dev" | chpasswd
+
+# start the Docker container with this user
+USER cgbu-dev 
 
 # create directory for additional software packages
 RUN mkdir /home/cgbu-dev/opt
@@ -31,8 +36,14 @@ WORKDIR /home/cgbu-dev/opt/
 COPY jdk-8u65-linux-x64.tar.gz /home/cgbu-dev/opt/
 RUN cd /home/cgbu-dev/opt; tar -zxf jdk-8u65-linux-x64.tar.gz
 # set Java environment variables
-ENV JAVA_HOME /home/cgbu-dev/opt/jdk1.8.0_65
+ENV JAVA_HOME=/home/cgbu-dev/opt/jdk1.8.0_65
+
+RUN echo -e "### Java 8 \n\ 
+export JAVA_HOME=/home/cgbu-dev/opt/jdk1.8.0_65\n\
+\n" >> ${HOME}/.bashrc
+
 ENV PATH $JAVA_HOME/bin:$PATH
+
 # test
 RUN java -version
 
@@ -42,7 +53,12 @@ RUN cd /home/cgbu-dev/opt && curl -O http://apache.mirrors.tds.net/maven/maven-3
 RUN mkdir /home/cgbu-dev/.m2
 COPY settings.xml /home/cgbu-dev/.m2/
 # set Maven environment variables
-ENV M2_HOME /home/cgbu-dev/opt/apache-maven-3.3.3
+ENV M2_HOME=/home/cgbu-dev/opt/apache-maven-3.3.3
+
+RUN echo -e "### Maven 3.3.3 \n\ 
+export M2_HOME=/home/cgbu-dev/opt/apache-maven-3.3.3\n\
+\n" >> ${HOME}/.bashrc
+
 ENV PATH /home/cgbu-dev/opt/apache-maven-3.3.3/bin:$PATH
 # test
 RUN mvn -version
@@ -53,18 +69,17 @@ RUN unzip fmw_12.2.1.0.0_wls_Disk1_1of1.zip
 COPY wl_coh_12.2.1.rsp /home/cgbu-dev/opt/
 COPY oraInst.loc /home/cgbu-dev/opt/
 
-# change permissions for all files in the cgbu-dev home directory 
-# (all files are still owned by root)
-RUN chown -R cgbu-dev:cgbu-dev /home/cgbu-dev
-
-# start the Docker container with this user
-USER cgbu-dev 
 # run OUI installer
 RUN java -jar fmw_12.2.1.0.0_wls.jar -silent -responseFile \
 /home/cgbu-dev/opt/wl_coh_12.2.1.rsp -invPtrLoc /home/cgbu-dev/opt/oraInst.loc
 
 # set Coherence environment variables
 ENV COHERENCE_HOME=/home/cgbu-dev/opt/wlcoh_12.2.1/coherence
+
+RUN echo -e "### Coherence 12.2.1 \n\ 
+export COHERENCE_HOME=/home/cgbu-dev/opt/wlcoh_12.2.1/coherence\n\
+\n" >> ${HOME}/.bashrc
+
 
 ### configure jVisualVM plugins: Visual GC, VisualVM-JConsole, VisualVM-MBeans, Coherence-JVisualVM
 RUN cd ${JAVA_HOME} && \
